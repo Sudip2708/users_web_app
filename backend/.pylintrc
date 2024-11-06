@@ -1,0 +1,93 @@
+[MASTER]
+# Python verze, kterou používáte
+py-version=3.11
+
+# Přidejte dodatečné cesty k modulům, pokud je potřebujete
+#init-hook='import sys; sys.path.append("./users/tests")'
+
+# Použijte více procesů pro kontrolu
+jobs=0
+
+# Přidejte další pluginy, pokud je potřebujete
+load-plugins=pylint.extensions.docparams,pylint.extensions.docstyle
+
+[MESSAGES CONTROL]
+# Vypněte varování, která nejsou kompatibilní s Google Style Guide nebo jsou příliš striktní
+disable=
+    C0103,  # se zaměřuje na špatně pojmenované proměnné/funkce.
+    C0111,  # kontroluje, zda nechybí docstring, což máš ošetřeno pomocí rozšíření docparams.
+    R0903,  # upozorňuje na třídy s příliš málo veřejnými metodami (kontroluje, zda třída není příliš jednoduchá).
+    W0611,  # unused-import (může být užitečné pro typy)
+
+[FORMAT]
+# Maximální délka řádku
+max-line-length=80
+
+# Odskok čtyři mezery
+indent-string='    '
+
+# Očekávaný formát docstringů
+docstring-style=google
+
+[BASIC]
+# Povolené názvy proměnných, funkcí atd.
+good-names=i,j,k,ex,Run,_,pk,id
+
+# Regulární výraz pro názvy funkcí
+function-naming-style=snake_case
+
+# Regulární výraz pro názvy proměnných
+variable-naming-style=snake_case
+
+# Regulární výraz pro názvy konstant
+const-naming-style=UPPER_CASE
+
+# Regulární výraz pro názvy tříd
+class-naming-style=PascalCase
+
+# Nastavení pravidel pro názvy proměnných
+variable-rgx=[a-z_][a-z0-9_]{0,30}$
+
+# Nastavení pravidel pro názvy funkcí
+function-rgx=[a-z_][a-z0-9_]{2,30}$
+
+[DESIGN]
+# Maximální počet argumentů funkce
+max-args=7
+
+# Minimální počet veřejných metod pro třídu
+min-public-methods=1
+
+# Maximální počet atributů pro třídu
+max-attributes=10
+
+# Maximální povolená složitost funkcí
+max-complexity=10
+
+[SIMILARITIES]
+# Minimální počet řádků pro detekci duplikátů
+min-similarity-lines=6
+
+# Ignorujte komentáře při hledání podobností
+ignore-comments=yes
+
+# Ignorujte docstringy při hledání podobností
+ignore-docstrings=yes
+
+[TYPECHECK]
+# Seznam modulů, které Pylint nemůže importovat
+ignored-modules=
+
+# Seznam tříd, které jsou považovány za mixiny
+mixin-class-rgx=.*Mixin
+
+# Ignorování varování u generovaných členů v knihovnách jako numpy a torch.
+generated-members=numpy.*,torch.*
+
+[CLASSES]
+# Seznam metod, které jsou povoleny v rozhraních nebo abstraktních třídách
+defining-attr-methods=__init__,__new__,setUp,__post_init__
+
+[EXCEPTIONS]
+# Povolené výjimky pro použití v except bloku
+overgeneral-exceptions=Exception
